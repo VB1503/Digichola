@@ -17,5 +17,11 @@ export const Images = [
   {
     image: "https://i.pinimg.com/564x/4e/4c/ef/4e4cefd0c0d134af0809beec9f6d1cc1.jpg",
   },
+  {
+    image: "https://i.pinimg.com/564x/c4/1c/97/c41c97b9ddadd6b139549ff396aa7063.jpg",
+  },
+  {
+    image: "https://i.pinimg.com/564x/50/08/86/50088629127b2421a4adb205770b42c1.jpg",
+  },
 
 ];

@@ -9,8 +9,8 @@ import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper/module
 
 function Carousel() {
   return (
-    <>
-    <div className="container">
+    <div className=''>
+    <div className="container mx-auto">
       <Swiper
         effect={'coverflow'}
         grabCursor={true}
@@ -45,7 +45,7 @@ function Carousel() {
     
       </Swiper>
     </div>
-    </>
+    </div>
   );
 }
 

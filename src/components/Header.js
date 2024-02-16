@@ -48,8 +48,8 @@ const Header = () => {
         </div>
         <div className="menubar-flex"> <Navbar isOpen={isOpen} closeMenu={closeMenu} /></div>
       <div className="button-desk">
-           <button className={isOpen ? 'login active' : 'login'}>Log in</button>
-           <button className={isOpen ? 'start_for_free active' : 'start_for_free'}>Start for free</button>
+           <Link to={"/login"} className={isOpen ? 'login active' : 'login'}>Log in</Link>
+           <button className={isOpen ? 'start_for_free active text-black' : 'start_for_free text-black'}>Start for free</button>
       </div>
       </div>
     </center>

@@ -15,11 +15,15 @@ import Contactus from './routes/Contactus';
 import TermsOfService from './routes/TermsOfService';
 import PrivacyPolicy from './routes/PrivacyPolicy';
 import Layout from './components/Layout'
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 const App = () => {
   return (
     <>
       <Routes>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/register' element={<Register/>}/>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
