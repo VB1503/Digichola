@@ -20,7 +20,7 @@ export default function Footer() {
   };
   
   return (
-    <center className='footer'>
+    <center className='footer z-10 '>
         <div className='scroll_top'>
           <img src={scrollup} onClick={scrollToTop} title='scroll to top' alt='#'></img>
         </div>
