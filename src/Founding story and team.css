@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+
+.digicontent{
+    padding: 2rem;
+    font-family:'Roboto' serif;
+    background: linear-gradient(to right,rgba(0, 151, 178, 0.5),rgba(126, 217, 87, 0.5) );
+    text-align: center;
+    border-radius: 50px;
+    margin: 1rem 2rem;
+  
+  }
+  .digicontent h2{
+    text-transform: uppercase;
+    line-height: 50px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 30px;
+  }
+  
+  .digicontent p{
+    text-align: left;
+    
+    font-size: 30px;
+    margin: 3rem;
+    font-family:'Roboto' serif;
+  }
+  .main{
+    text-transform: uppercase;
+    line-height: 50px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 40px;
+    text-align: center;
+    margin: 3rem;
+  }
+
+  .digicontent h3{
+    text-align: left;
+    font-weight: 600;
+    text-transform: capitalize;
+    font-size: 30px;
+    margin-left: 50px;
+    font-family:'Roboto' serif;
+  }
