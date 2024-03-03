@@ -1,0 +1,55 @@
+/* DC QR Scanner */
+
+.dcqr{
+    padding: 2rem;
+    font-family: sans-serif;
+    background: linear-gradient(to right,rgb(0 151 178/ 25%),
+    rgb(255 102 196/ 25%) );
+    text-align: center;
+    border-radius: 50px;
+    margin: 5rem 2rem;
+  }
+  
+  .dcqr-main{
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 35px;
+    font-weight: 700;
+    margin: 2rem;
+  }
+ .heading{
+  text-align:"left";
+  font-size:30px;
+}
+  @media only screen and (max-width: 480px) {
+   .dcqr{
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 25px;
+   }
+   .dcqr-main{
+    font-size: 25px;
+   }
+  .services{
+    display: block;
+  }
+  .list-style-img{
+    width: 40px;
+    height: 30px;
+    padding:0px 10px;
+  
+  }
+  .list-style-name{
+    font-size: 23px;
+  }
+  .quote{
+    font-size: 30px;
+    margin: 10px;
+  }
+  .btns-primary{
+    display: block;
+  }
+  .btn-primary{
+    margin: 20px;
+  }
+  }

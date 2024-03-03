@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { IoSearchOutline } from "react-icons/io5";
 import { MdOutlineMic } from "react-icons/md";
 import { CgMoreO } from "react-icons/cg";

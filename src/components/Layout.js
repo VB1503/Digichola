@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './footer';
 import { socialMedia } from '../socialmediaDetails';
-import Carousel from '../routes/home/components/Carousel';
 
 const Layout = () => {
   return (

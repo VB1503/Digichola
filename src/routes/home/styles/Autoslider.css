@@ -1,0 +1,40 @@
+
+.image-wrapper{
+    margin: 2% 4%;
+    
+  }
+  .image-wrapper img{
+    border-radius: 30px;
+    width: 350px;
+    height: 250px;
+    margin: 20px;
+  }
+  
+@media only screen and (max-width: 480px){
+  .image-wrapper img{
+    border-radius: 15px;
+    width: 250px;
+    height: 150px;
+  }
+  }
+ 
+/* 
+ AutoSlider
+.image-wrapper {
+  margin: 2% 2%; /* Adjusted margin for responsiveness 
+
+  @media only screen and (min-width: 768px) {
+    margin: 2% 4%;  Adjusted margin for larger screens 
+  }
+
+  @media only screen and (min-width: 1200px) {
+    margin: 2% 8%; /* Further adjusted margin for extra-large screens 
+  }
+}
+
+.image-wrapper img {
+  border-radius: 30px;
+  width: 100%; /* Make the image width 100% to fit its container 
+  height: auto; /* Maintain aspect ratio while resizing 
+} */
+

@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import "./login.style.css";
 import logo from "../images/logo.png";
 import { FaEyeSlash, FaEye,FaFacebook,FaLinkedin } from "react-icons/fa";
 import { IoCheckbox } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
-import { TiSocialLinkedinCircular } from "react-icons/ti";
+// import { TiSocialLinkedinCircular } from "react-icons/ti";
 import { Link } from "react-router-dom";
 export default function Register() {
     const [showPassword, setShowPassword] = useState(false);

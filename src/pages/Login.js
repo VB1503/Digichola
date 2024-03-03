@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import "./login.style.css";
 import logo from "../images/logo.png";
 import { FaEyeSlash, FaEye,FaFacebook,FaLinkedin } from "react-icons/fa";
 import { IoCheckbox } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
-import { TiSocialLinkedinCircular } from "react-icons/ti";
+// import { TiSocialLinkedinCircular } from "react-icons/ti";
 import { Link } from "react-router-dom";
 export default function Login() {
     const email = useRef(null);
@@ -12,7 +12,7 @@ export default function Login() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [checked,setChecked] = useState(false);
-  const [text,setText] = useState("");
+  const [text] = useState("");
     function formValidate(e){
         e.preventDefault()
     }
