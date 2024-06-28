@@ -1,0 +1,88 @@
+.recents-container {
+    padding: 20px 30px;
+  }
+  
+  .recents-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style-type: none;
+    padding: 0;
+
+  }
+  .no-recent-data {
+    text-align: center;
+    font-size: 18px;
+    color: #555;
+    flex-grow: 2;
+  }
+  .recent-item {
+    border-radius: 18px;
+    padding: 15px;
+    max-width: 310px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+  }
+  
+  .profile-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .business-name {
+    font-weight: bold;
+  }
+  
+  .business-place {
+    font-size: 0.8em;
+    color: gray;
+  }
+  
+  .business-info {
+    flex: 1;
+  }
+  
+  .description {
+    overflow: hidden;
+    font-size: 14px;
+    margin: 10px 0;
+    color:rgb(36, 36, 36);
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    line-clamp: 5;
+    box-orient: vertical;
+  }
+    
+  .shadow-xl {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media(max-width:700px){
+    .recent-item{
+      max-width: 380px;
+    }
+    .recents-list{
+      justify-content: center;
+    }
+    .recents-container{
+      padding: 20px;
+    }
+    
+  }

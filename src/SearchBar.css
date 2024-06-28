@@ -1,0 +1,15 @@
+.search-bar{
+    border-radius: 8px;
+    margin:0 auto ;
+    width: 100%;
+    position: relative;
+    outline:none;
+    color: rgb(74, 73, 73);
+}
+.search-bar input[type=text]::placeholder{
+    font-size: 14px;
+    width: 100%;
+}
+.search-in{
+    text-decoration: none;
+}
