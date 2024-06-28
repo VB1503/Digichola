@@ -5,7 +5,6 @@ import { FaUser, FaSignOutAlt } from 'react-icons/fa';
 import axios from "axios";
 
 const ProfileOptions = () => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const navigate = useNavigate();
   const is_business_user = localStorage.getItem("is_business_user");
   const [fullName, setFullName] = useState("");
@@ -18,7 +17,7 @@ const ProfileOptions = () => {
     const accessToken = JSON.parse(localStorage.getItem('token'));
     const refreshToken = JSON.parse(localStorage.getItem('refresh_token'));
     try {
-      await axios.post(`${BACKEND_API_URL}/api/v1/auth/logout/`, {
+      await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/logout/', {
         "refresh_token": refreshToken,
       }, {
         headers: {
@@ -55,7 +54,7 @@ const ProfileOptions = () => {
 
     try {
       const response = await axios.post(
-        `${BACKEND_API_URL}/api/v1/auth/business-users/`,
+        "https://digicholabackendfinal.onrender.com/api/v1/auth/business-users/",
         userData,
         {
           headers: {

@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Recents from "../components/Recents";
 const SearchResult = () => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [searchValue, setSearchValue] = useState("");
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
@@ -33,7 +32,7 @@ const SearchResult = () => {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await axios.get(`${BACKEND_API_URL}/api/v1/auth/update-suggestions/`);
+      const response = await axios.get("https://digicholabackendfinal.onrender.com/api/v1/auth/update-suggestions/");
       setSuggestions(response.data.Suggestions);
     } catch (error) {
       setError("Error fetching suggestions.");
@@ -49,7 +48,7 @@ const SearchResult = () => {
     try {
       const latitude = localStorage.getItem("latitude");
       const longitude = localStorage.getItem("longitude");
-      let apiUrl = `${BACKEND_API_URL}/search/search/?query=${searchValue}`;
+      let apiUrl = `https://digicholabackendfinal.onrender.com/search/search/?query=${searchValue}`;
       if (latitude && longitude) {
         apiUrl += `&user_location=${latitude},${longitude}`;
       }

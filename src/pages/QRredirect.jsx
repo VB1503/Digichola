@@ -3,13 +3,12 @@ import { useParams } from 'react-router-dom';
 
 function QRredirect() {
   const { chunk } = useParams();
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchRedirectUrl = async () => {
       try {
-        const response = await fetch(`${BACKEND_API_URL}/api/v1/auth/qrredirect/${chunk}/`);
+        const response = await fetch(`https://digicholabackendfinal.onrender.com/api/v1/auth/qrredirect/${chunk}/`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -34,7 +33,7 @@ function QRredirect() {
       {loading ? (
         <center className="w-full h-[80vh] flex items-center justify-center"><span className="text-violet-700 font-bold text-[20px]">Loading<span className="text-yellow-600">...</span></span></center>
       ) : (
-        <center className="w-full h-[80vh] flex items-center justify-center"><span className="text-violet-700 font-bold text-[20px]">Redirecting<span className="text-yellow-600">...</span></span></center>
+        <div>Redirecting...</div>
       )}
     </div>
   );

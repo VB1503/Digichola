@@ -3,7 +3,6 @@ import axios from 'axios';
 import { FaTimes, FaEdit, FaTrash, FaPlus, FaYoutube } from 'react-icons/fa';
 
 const UpdatesOverview = ({ data, business_id }) => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [overviewData, setOverviewData] = useState(data);
   const [formVisible, setFormVisible] = useState(false);
   const [formData, setFormData] = useState({
@@ -59,7 +58,7 @@ const UpdatesOverview = ({ data, business_id }) => {
           setLoading(false);
           return;
         }
-        await axios.patch(`${BACKEND_API_URL}/api/v1/auth/overview/${editingId}/`, finalFormData,
+        await axios.patch(`https://digicholabackendfinal.onrender.com/api/v1/auth/overview/${editingId}/`, finalFormData,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
@@ -69,7 +68,7 @@ const UpdatesOverview = ({ data, business_id }) => {
         setOverviewData(overviewData.map(item => (item.id === editingId ? { ...item, ...formData, overview: formData.overview } : item)));
         setEditingId(null);
       } else {
-        const response = await axios.post(`${BACKEND_API_URL}/api/v1/auth/overview/`, finalFormData,
+        const response = await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/overview/', finalFormData,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
@@ -101,7 +100,7 @@ const UpdatesOverview = ({ data, business_id }) => {
   const handleDelete = async (id) => {
     setLoading(true);
     try {
-      await axios.delete(`${BACKEND_API_URL}/api/v1/auth/overview/${id}/`,
+      await axios.delete(`https://digicholabackendfinal.onrender.com/api/v1/auth/overview/${id}/`,
       {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,

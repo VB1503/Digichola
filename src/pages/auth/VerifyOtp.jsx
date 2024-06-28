@@ -4,7 +4,6 @@ import { useNavigate, Link } from 'react-router-dom';
 
 
 const VerifyOtp = () => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [otp, setOtp] = useState('');
   const [isInvalid, setIsInvalid] = useState(false); // State to manage input validation
   const [isIncorrect, setIsIncorrect] = useState(false); // State to manage input validation
@@ -26,7 +25,7 @@ const VerifyOtp = () => {
     e.preventDefault();
     setResend(true);
     if(phone_number){
-        const res = await axios.post(`${BACKEND_API_URL}/api/v1/auth/resendOtp/`, { 'user': parseInt(userId, 10), 'phone_number': phone_number });
+        const res = await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/resendOtp/', { 'user': parseInt(userId, 10), 'phone_number': phone_number });
         const resp = res.data;
     }
 }
@@ -35,7 +34,7 @@ const VerifyOtp = () => {
     if (otp.length === 6 && /^\d+$/.test(otp)) {
       const userInt = parseInt(userId, 10);
       try {
-        const res = await axios.post(`${BACKEND_API_URL}/api/v1/auth/verify-phone/`, { 'user': userInt, 'otp': otp });
+        const res = await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/verify-phone/', { 'user': userInt, 'otp': otp });
         const resp = res.data;
         if (res.status === 200) {
           localStorage.setItem('is_verified', true)

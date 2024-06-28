@@ -6,7 +6,6 @@ import { HiArrowTopRightOnSquare } from "react-icons/hi2";
 import { useNavigate } from 'react-router-dom';
 
 function TopBusinesses() {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [topBusinesses, setTopBusinesses] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -18,13 +17,13 @@ function TopBusinesses() {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`${BACKEND_API_URL}/api/v1/auth/update-suggestions/`);
+        const response = await axios.get('https://digicholabackendfinal.onrender.com/api/v1/auth/update-suggestions/');
         const suggestions = response.data.Suggestions;
 
         const updatedBusinesses = await Promise.all(
           suggestions.map(async (business) => {
             const galleryResponse = await axios.get(
-              `${BACKEND_API_URL}/api/v1/auth/vas_view_profile/${business.business_id}`
+              `https://digicholabackendfinal.onrender.com/api/v1/auth/vas_view_profile/${business.business_id}`
             );
             return { ...business, galleryImages: galleryResponse.data.Galary };
           })

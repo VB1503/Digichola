@@ -3,7 +3,6 @@ import axios from 'axios';
 import { FaTimes, FaEdit, FaTrash, FaPlus } from 'react-icons/fa';
 
 const Certificate = ({ data, business_id }) => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [certificateData, setCertificateData] = useState(data.length > 0 ? data[0] : null);
   const [formVisible, setFormVisible] = useState(data.length === 0);
   const [formData, setFormData] = useState({
@@ -61,7 +60,7 @@ const Certificate = ({ data, business_id }) => {
           setLoading(false);
           return;
         }
-        await axios.patch(`${BACKEND_API_URL}/api/v1/auth/dccertification/${certificateData.id}/`, finalFormData,
+        await axios.patch(`https://digicholabackendfinal.onrender.com/api/v1/auth/dccertification/${certificateData.id}/`, finalFormData,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
@@ -70,7 +69,7 @@ const Certificate = ({ data, business_id }) => {
         );
         setCertificateData({ ...certificateData, ...finalFormData });
       } else {
-        const response = await axios.post(`${BACKEND_API_URL}/api/v1/auth/dccertification/`, finalFormData,
+        const response = await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/dccertification/', finalFormData,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
@@ -100,7 +99,7 @@ const Certificate = ({ data, business_id }) => {
   const handleDelete = async () => {
     setLoading(true);
     try {
-      await axios.delete(`${BACKEND_API_URL}/api/v1/auth/dccertification/${certificateData.id}/`);
+      await axios.delete(`https://digicholabackendfinal.onrender.com/api/v1/auth/dccertification/${certificateData.id}/`);
       setCertificateData(null);
       setFormVisible(true);
     } catch (error) {

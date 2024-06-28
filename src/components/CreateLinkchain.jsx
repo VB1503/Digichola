@@ -4,7 +4,6 @@ import { FaTimes, FaPlus } from 'react-icons/fa';
 import LinkChain from './LinkChain';
 
 const CreateLinkChain = ({ data, business_id }) => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [formVisible, setFormVisible] = useState(true);
   const [formData, setFormData] = useState({
     link_icon: '',
@@ -22,7 +21,7 @@ const CreateLinkChain = ({ data, business_id }) => {
   useEffect(() => {
     const fetchSocialMediaIcons = async () => {
       try {
-        const response = await axios.get(`${BACKEND_API_URL}/api/v1/auth/linkchain-media-icons/`);
+        const response = await axios.get('https://digicholabackendfinal.onrender.com/api/v1/auth/linkchain-media-icons/');
         setSocialMediaIcons(response.data);
       } catch (error) {
         console.error('Error fetching social media icons:', error);
@@ -48,7 +47,7 @@ const CreateLinkChain = ({ data, business_id }) => {
     setLoading(true);
     try {
       const iconUrl = await uploadImage(formData.link_icon);
-      const response = await axios.post(`${BACKEND_API_URL}/api/v1/auth/linkchain-media-icons/`, {
+      const response = await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/linkchain-media-icons/', {
         media_provider_name: customIconName,
         media_provider_icon: iconUrl,
       });
@@ -114,7 +113,7 @@ const CreateLinkChain = ({ data, business_id }) => {
 
     setLoading(true);
     try {
-      await axios.post(`${BACKEND_API_URL}/api/v1/auth/linkchain/`, formData,
+      await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/linkchain/', formData,
       {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,

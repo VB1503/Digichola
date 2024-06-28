@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom';
 import { getRecentSearches, addRecentSearch } from './localStorageUtil';
 
 const SearchBar = () => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [searchValue, setSearchValue] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -16,7 +15,7 @@ const SearchBar = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const categoryRes = await axios.get(`${BACKEND_API_URL}/search/categories`);
+        const categoryRes = await axios.get('https://digicholabackendfinal.onrender.com/search/categories');
         setCategories(categoryRes.data);
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -43,7 +42,7 @@ const SearchBar = () => {
     try {
       const latitude = localStorage.getItem('latitude');
       const longitude = localStorage.getItem('longitude');
-      let apiUrl = `${BACKEND_API_URL}/search/search/?query=${query}`;
+      let apiUrl = `https://digicholabackendfinal.onrender.com/search/search/?query=${query}`;
       if (latitude && longitude) {
         apiUrl += `&user_location=${latitude},${longitude}`;
       }

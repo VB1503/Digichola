@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const ContactUs = ({ showModal, onClose }) => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -50,7 +49,7 @@ const ContactUs = ({ showModal, onClose }) => {
     }
 
     try {
-      const response = await axios.post(`${BACKEND_API_URL}/api/v1/auth/contactmailing/`, formData);
+      const response = await axios.post('http://localhost:8000/api/v1/auth/contactmailing/', formData);
       if (response.status === 200) {
         setFormStatus('Your message has been sent successfully!');
         setFormData({

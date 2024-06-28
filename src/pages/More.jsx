@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import { FaSearch, FaArrowLeft } from 'react-icons/fa';
 
 function More() {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [categories, setCategories] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const navigate = useNavigate();
@@ -12,7 +11,7 @@ function More() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const categoryRes = await axios.get(`${BACKEND_API_URL}/search/categories`);
+        const categoryRes = await axios.get('https://digicholabackendfinal.onrender.com/search/categories');
         setCategories(categoryRes.data);
       } catch (error) {
         console.error("An error occurred:", error);

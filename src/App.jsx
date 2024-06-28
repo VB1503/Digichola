@@ -36,7 +36,6 @@ import QRredirect from './pages/QRredirect';
 import Explore from './pages/Explore';
 
 function App() {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   useEffect(() => {
     const refreshToken = localStorage.getItem('refresh_token');
     const accessToken = localStorage.getItem('token');
@@ -50,7 +49,7 @@ function App() {
 
     const refreshAccessToken = async () => {
       try {
-        const response = await axios.post(`${BACKEND_API_URL}/api/v1/auth/token/refresh/`, {
+        const response = await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/token/refresh/', {
           refresh: parsedRefreshToken,
         });
         const newAccessToken = response.data.access;

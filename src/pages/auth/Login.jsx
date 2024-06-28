@@ -5,7 +5,6 @@ import axios from "axios";
 
 
 const Login = () => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const  REACT_APP_GOOGLE_CLIENT_ID =  import.meta.env.VITE_GOOGLE
   const REACT_APP_GOGGLE_REDIRECT_URL_ENDPOINT = import.meta.env.VITE_BASE
   const [username, setUsername] = useState(localStorage.getItem('first_name'))
@@ -73,7 +72,7 @@ const Login = () => {
           setLoading(true);
             try {
               if (Object.values(errors).every(error => error === '')) {
-              const res = await axios.post(`${BACKEND_API_URL}/api/v1/auth/login/`, logindata);
+              const res = await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/login/', logindata);
               const response = res.data;
               if (res.status === 200) {
                 localStorage.setItem('token', JSON.stringify(response.access_token));

@@ -5,7 +5,6 @@ import axios from "axios";
 import SearchBar from "../components/SearchBar";
 
 const SearchResult = () => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const { categorySelected } = useParams();
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +20,7 @@ const SearchResult = () => {
     try {
       const latitude = localStorage.getItem('latitude');
       const longitude = localStorage.getItem('longitude');
-      let apiUrl = `${BACKEND_API_URL}/search/search/?query=${categorySelected}`;
+      let apiUrl = `https://digicholabackendfinal.onrender.com/search/search/?query=${categorySelected}`;
       if (latitude && longitude) {
         apiUrl += `&user_location=${latitude},${longitude}`;
       }

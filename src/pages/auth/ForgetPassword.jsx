@@ -4,7 +4,6 @@ import { FaExclamationCircle } from "react-icons/fa";
 import axios from 'axios';
 
 function ForgetPassword() {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
@@ -17,7 +16,7 @@ function ForgetPassword() {
         return;
       }
       try {
-        const res = await axios.post(`${BACKEND_API_URL}/api/v1/auth/password-reset/`, { email });
+        const res = await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/password-reset/', { email });
         if (res.status === 200) {
           console.log(res.data);
           navigate("/");

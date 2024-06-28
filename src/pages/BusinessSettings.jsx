@@ -7,7 +7,6 @@ import { encryptBusinessId } from '../utils/LockAndKey';
 import axios from 'axios';
 
 function BusinessSettings() {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [businessDetails, setBusinessDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -22,7 +21,7 @@ function BusinessSettings() {
     const fetchBusinessDetails = async () => {
       const businessUserId = parseInt(localStorage.getItem('userid'), 10);
       try {
-        const response = await axios.get(`${BACKEND_API_URL}/api/v1/auth/business-user-details/${businessUserId}/`);
+        const response = await axios.get(`https://digicholabackendfinal.onrender.com/api/v1/auth/business-user-details/${businessUserId}/`);
         setBusinessDetails(response.data);
       } catch (error) {
         console.error('Error fetching business details:', error);
@@ -45,7 +44,7 @@ function BusinessSettings() {
 
   const handleDeleteBusiness = async () => {
     try {
-      await axios.delete(`${BACKEND_API_URL}/api/v1/auth/business-details/${selectedBusinessId}/`);
+      await axios.delete(`https://digicholabackendfinal.onrender.com/api/v1/auth/business-details/${selectedBusinessId}/`);
       // Refresh business details after deletion
       window.location.reload();
     } catch (error) {

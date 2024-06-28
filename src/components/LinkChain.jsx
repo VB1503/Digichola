@@ -3,7 +3,6 @@ import axios from 'axios';
 import { FaTimes } from 'react-icons/fa';
 
 const LinkChain = ({ data, business_id }) => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [links, setLinks] = useState(data);
   const [activeLinkId, setActiveLinkId] = useState(null);
   const [formData, setFormData] = useState({
@@ -23,7 +22,7 @@ const LinkChain = ({ data, business_id }) => {
   useEffect(() => {
     const fetchSocialMediaIcons = async () => {
       try {
-        const response = await axios.get(`${BACKEND_API_URL}/api/v1/auth/linkchain-media-icons/`);
+        const response = await axios.get('https://digicholabackendfinal.onrender.com/api/v1/auth/linkchain-media-icons/');
         setSocialMediaIcons(response.data);
       } catch (error) {
         console.error('Error fetching social media icons:', error);
@@ -88,7 +87,7 @@ const LinkChain = ({ data, business_id }) => {
     setLoading(true);
     try {
       const iconUrl = await uploadImage(formData.link_icon);
-      const response = await axios.post(`${BACKEND_API_URL}/api/v1/auth/linkchain-media-icons/`, {
+      const response = await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/linkchain-media-icons/', {
         media_provider_name: customIconName,
         media_provider_icon: iconUrl,
       });
@@ -135,7 +134,7 @@ const LinkChain = ({ data, business_id }) => {
     setLoading(true);
     try {
       if (activeLinkId) {
-        await axios.patch(`${BACKEND_API_URL}/api/v1/auth/linkchain/${activeLinkId}/`, formData,
+        await axios.patch(`https://digicholabackendfinal.onrender.com/api/v1/auth/linkchain/${activeLinkId}/`, formData,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
@@ -143,7 +142,7 @@ const LinkChain = ({ data, business_id }) => {
         }
         );
       } else {
-        await axios.post(`${BACKEND_API_URL}/api/v1/auth/linkchain/`, formData,
+        await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/linkchain/', formData,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
@@ -178,7 +177,7 @@ const handleLinkchainDelete = async ()=>{
  setLoading(true);
     try {
       if (activeLinkId) {
-        await axios.delete(`${BACKEND_API_URL}/api/v1/auth/linkchain/${activeLinkId}/`,
+        await axios.delete(`https://digicholabackendfinal.onrender.com/api/v1/auth/linkchain/${activeLinkId}/`,
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,

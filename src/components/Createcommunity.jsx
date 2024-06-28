@@ -5,7 +5,6 @@ import EditCommunityForm from './EditCommunity';
 
 const CreateCommunity = ({ business_id, data }) => {
   const [formVisible, setFormVisible] = useState(false);
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [formData, setFormData] = useState({
     community_name: "",
     social_media_name: "Whatsapp",
@@ -28,7 +27,7 @@ const CreateCommunity = ({ business_id, data }) => {
   useEffect(() => {
     const fetchSocialMediaIcons = async () => {
       try {
-        const response = await axios.get(`${BACKEND_API_URL}/api/v1/auth/social-media-icons/`);
+        const response = await axios.get("https://digicholabackendfinal.onrender.com/api/v1/auth/social-media-icons/");
         setSocialMediaIcons(response.data);
       } catch (error) {
         console.error("Error fetching social media icons:", error);
@@ -74,7 +73,7 @@ const CreateCommunity = ({ business_id, data }) => {
     setLoading(true);
     try {
       const iconUrl = await uploadImage(custom_social_icon);
-      const response = await axios.post(`${BACKEND_API_URL}/api/v1/auth/social-media-icons/`, {
+      const response = await axios.post("https://digicholabackendfinal.onrender.com/api/v1/auth/social-media-icons/", {
         social_media_name: customIconName,
         social_media_icon: iconUrl,
       });
@@ -143,7 +142,7 @@ const CreateCommunity = ({ business_id, data }) => {
     if (!validateForm()) return;
     setLoading(true);
     try {
-      await axios.post(`${BACKEND_API_URL}/api/v1/auth/createcommunity/`, formData,
+      await axios.post("https://digicholabackendfinal.onrender.com/api/v1/auth/createcommunity/", formData,
       {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,

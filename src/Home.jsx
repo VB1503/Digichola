@@ -9,7 +9,6 @@ import NewsCard from './components/NewsCards';
 import Recents from './components/Recents';
 import TopBusinesses from './components/TopBusinesses';
 function Home() {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [bannerData, setBannerData] = useState([]);
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
   const [categories, setCategories] = useState([]);
@@ -22,10 +21,10 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const bannerRes = await axios.get(`${BACKEND_API_URL}/api/v1/auth/home-images/`);
+        const bannerRes = await axios.get('https://digicholabackendfinal.onrender.com/api/v1/auth/home-images/');
         setBannerData(bannerRes.data);
 
-        const categoryRes = await axios.get(`${BACKEND_API_URL}/search/categories`);
+        const categoryRes = await axios.get('https://digicholabackendfinal.onrender.com/search/categories');
         const filteredCategories = categoryRes.data.filter(category => category.parent === null);
         setCategories(filteredCategories);
         setParentIds(categoryRes.data.map(category => category.parent)); // Store parent IDs

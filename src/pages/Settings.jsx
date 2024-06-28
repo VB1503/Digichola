@@ -12,7 +12,6 @@ function Settings() {
   const handleback =()=>{
     navigate('/show_options')
   }
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [image, setImage] = useState("");
   const [otp, setOtp] = useState(false);
   const is_verified = localStorage.getItem('is_verified');
@@ -50,7 +49,7 @@ function Settings() {
     try {
       const userId = localStorage.getItem('userid');
       const res = await axios.delete(
-        `${BACKEND_API_URL}/api/v1/auth/update-user/${userId}/`,
+        `https://digicholabackendfinal.onrender.com/api/v1/auth/update-user/${userId}/`,
        // Pass updated userData here
         {
           headers: {
@@ -82,7 +81,7 @@ function Settings() {
   const handleChangePassword = async(e)=>{
     e.preventDefault()
     if (email) {
-      const res = await axios.post(`${BACKEND_API_URL}/api/v1/auth/changePassword/`, {'email': email},
+      const res = await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/changePassword/', {'email': email},
         {
           headers: {
             Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
@@ -160,7 +159,7 @@ console.log(is_verified)
     try {
       const userId = localStorage.getItem('userid');
       const res = await axios.patch(
-        `${BACKEND_API_URL}/api/v1/auth/update-user/${userId}/`,
+        `https://digicholabackendfinal.onrender.com/api/v1/auth/update-user/${userId}/`,
         userData, // Pass updated userData here
         {
           headers: {
@@ -185,7 +184,7 @@ console.log(is_verified)
     try {
       const userId = localStorage.getItem('userid');
       const res = await axios.patch(
-        `${BACKEND_API_URL}/api/v1/auth/update-user/${userId}/`,
+        `https://digicholabackendfinal.onrender.com/api/v1/auth/update-user/${userId}/`,
         { 'profile_pic': profile },
         {
          headers: {
@@ -214,7 +213,7 @@ console.log(is_verified)
       const userId = localStorage.getItem("userid");
       console.log(phone_number)
       const res = await axios.post(
-        `${BACKEND_API_URL}/api/auth/phoneNumber/`,
+        'https://digicholabackendfinal.onrender.com/api/auth/phoneNumber/',
         { 'user': parseInt(userId, 10), "phone_number": Phone},
         {
          headers: {

@@ -3,7 +3,6 @@ import axios from 'axios';
 import { FaTimes } from 'react-icons/fa';
 
 const EditCommunityForm = ({ business_id, data }) => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [allCommunities, setAllCommunities] = useState(data);
   const [activeCommunityId, setActiveCommunityId] = useState(null);
   const [error, setError] = useState(null);
@@ -32,7 +31,7 @@ const EditCommunityForm = ({ business_id, data }) => {
   useEffect(() => {
     const fetchSocialMediaIcons = async () => {
       try {
-        const response = await axios.get(`${BACKEND_API_URL}/api/v1/auth/social-media-icons/`);
+        const response = await axios.get("https://digicholabackendfinal.onrender.com/api/v1/auth/social-media-icons/");
         setSocialMediaIcons(response.data);
       } catch (error) {
         console.error("Error fetching social media icons:", error);
@@ -78,7 +77,7 @@ const EditCommunityForm = ({ business_id, data }) => {
     setLoading(true);
     try {
       const iconUrl = await uploadImage(custom_social_icon);
-      const response = await axios.post(`${BACKEND_API_URL}/api/v1/auth/social-media-icons/`, {
+      const response = await axios.post("https://digicholabackendfinal.onrender.com/api/v1/auth/social-media-icons/", {
         social_media_name: customIconName,
         social_media_icon: iconUrl,
       });
@@ -172,7 +171,7 @@ const EditCommunityForm = ({ business_id, data }) => {
 
     setLoading(true);
     try {
-      await axios.patch(`${BACKEND_API_URL}/api/v1/auth/createcommunity/${activeCommunityId}/`, formData,
+      await axios.patch(`https://digicholabackendfinal.onrender.com/api/v1/auth/createcommunity/${activeCommunityId}/`, formData,
       {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
@@ -201,7 +200,7 @@ const EditCommunityForm = ({ business_id, data }) => {
   const CommunityDelete = async ()=>{
     setLoading(true);
     try {
-      await axios.delete(`${BACKEND_API_URL}/api/v1/auth/createcommunity/${activeCommunityId}/`,
+      await axios.delete(`https://digicholabackendfinal.onrender.com/api/v1/auth/createcommunity/${activeCommunityId}/`,
       {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,

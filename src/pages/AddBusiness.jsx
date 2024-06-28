@@ -9,7 +9,7 @@ function AddBusiness() {
   const handleBack = () => {
     navigate('/business/settings');
   };
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
+ 
   const [businessFormData, setBusinessFormData] = useState({
     business_name: '',
     business_email: '',
@@ -36,7 +36,7 @@ function AddBusiness() {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          `${BACKEND_API_URL}/search/categories/`
+          'https://digicholabackendfinal.onrender.com/search/categories/'
         );
         setCategories(response.data);
       } catch (error) {
@@ -76,7 +76,7 @@ function AddBusiness() {
 
     try {
       const response = await axios.post(
-        `${BACKEND_API_URL}/api/v1/auth/business-details/`,
+        'https://digicholabackendfinal.onrender.com/api/v1/auth/business-details/',
         businessFormData,
         {
           headers: {

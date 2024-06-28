@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { getRecentSearches } from './localStorageUtil';
 import { format } from 'date-fns';
+import axios from 'axios';
 import { CiShare1 } from 'react-icons/ci';
 import './Recents.css';
 

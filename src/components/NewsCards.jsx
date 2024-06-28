@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NewsCardAlt from './NewsCardAlt';
 // Replace with your New York Times API key
-const API_KEY = import.meta.env.VITE_NEWS_KEY
+const API_KEY = 'cyA4RWG5nYs8m91vRbHGgH07jmMl4u28';
 const API_URL = `https://api.nytimes.com/svc/topstories/v2/business.json?api-key=${API_KEY}`;
 
 const NewsCard = () => {

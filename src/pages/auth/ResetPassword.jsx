@@ -3,7 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 const ResetPassword = () => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const navigate=useNavigate()
   const {uid, token}=useParams()
   const [username, setUsername] = useState(localStorage.getItem('first_name'))
@@ -48,7 +47,7 @@ const data={
  const handleSubmit =async (e)=>{
     e.preventDefault()
     if (data) {
-      const res = await axios.patch(`${BACKEND_API_URL}/api/v1/auth/set-new-password/`, data)
+      const res = await axios.patch('https://digicholabackendfinal.onrender.com/api/v1/auth/set-new-password/', data)
       const response = res.data
       
       if (res.status === 200) {

@@ -5,7 +5,6 @@ import { FaStar, FaUser, FaTrash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 const Favourites = () => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -18,7 +17,7 @@ const Favourites = () => {
   const fetchCategoryDetail = async () => {
     try {
       const response = await axios.get(
-        `${BACKEND_API_URL}/api/v1/auth/favourites/${parseInt(userid)}`
+        `https://digicholabackendfinal.onrender.com/api/v1/auth/favourites/${parseInt(userid)}`
       );
       setSelectedCategory(response.data);
     } catch (error) {
@@ -31,7 +30,7 @@ const Favourites = () => {
   const deleteFavourite = async (fav_id) => {
     try {
       const response = await axios.delete(
-        `${BACKEND_API_URL}/api/v1/auth/favourites/${parseInt(userid)}`,
+        `https://digicholabackendfinal.onrender.com/api/v1/auth/favourites/${parseInt(userid)}`,
         { data: { favorite_id: fav_id } }
       );
       if (response.status === 200) {

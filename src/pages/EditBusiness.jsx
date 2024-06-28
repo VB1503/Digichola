@@ -11,7 +11,6 @@ import UpdatesOverview from '../components/UpdatesOverview';
 import Certificate from '../components/DcCertificate';
 import { decryptBusinessId } from '../utils/LockAndKey';
 function EditBusiness() {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const { business_id } = useParams();
   const decryptedId = decryptBusinessId(decodeURIComponent(business_id));
   const navigate = useNavigate();
@@ -48,7 +47,7 @@ function EditBusiness() {
 
     const fetchCategories = async () => {
       try {
-        const response = await axios.get(`${BACKEND_API_URL}/search/categories/`);
+        const response = await axios.get('https://digicholabackendfinal.onrender.com/search/categories/');
         setCategories(response.data);
       } catch (error) {
         console.error('Error fetching categories:', error);
@@ -57,7 +56,7 @@ function EditBusiness() {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${BACKEND_API_URL}/api/v1/auth/vas_view_profile/${decryptedId}/`);
+        const response = await axios.get(`https://digicholabackendfinal.onrender.com/api/v1/auth/vas_view_profile/${decryptedId}/`);
         setBusinessData(response.data);
         console.log(response.data);
         const Data = response.data.BusinessDetails[0];
@@ -125,7 +124,7 @@ function EditBusiness() {
     setLoading(true);
 
     try {
-      const response = await axios.patch(`${BACKEND_API_URL}/api/v1/auth/business-details/${decryptedId}/`, formData,
+      const response = await axios.patch(`https://digicholabackendfinal.onrender.com/api/v1/auth/business-details/${decryptedId}/`, formData,
       {
         headers: {
           Authorization: `Bearer ${JSON.parse(localStorage.getItem('token'))}`,
@@ -442,8 +441,8 @@ console.log(businessData.BusinessDetails[0].is_Qr_generated)
           carouselName="Gallery"
           imageFieldName="galary_photo"
           imageData={businessData.Galary || []}
-          postImageUrlEndpoint="https://console.digichola.in/api/v1/auth/imageurls/"
-          patchImageUrlEndpoint="https://console.digichola.in/api/v1/auth/imageurls"
+          postImageUrlEndpoint="https://digicholabackendfinal.onrender.com/api/v1/auth/imageurls/"
+          patchImageUrlEndpoint="https://digicholabackendfinal.onrender.com/api/v1/auth/imageurls"
           onUpload={handleImageUploadCarry}
           business_id={decryptedId}
         />
@@ -451,8 +450,8 @@ console.log(businessData.BusinessDetails[0].is_Qr_generated)
           carouselName="Business Updates"
           imageFieldName="poster"
           imageData={businessData.BusinessUpdatePosters || []}
-          postImageUrlEndpoint="https://console.digichola.in/api/v1/auth/businessupdateposters/"
-          patchImageUrlEndpoint="https://console.digichola.in/api/v1/auth/businessupdateposters"
+          postImageUrlEndpoint="https://digicholabackendfinal.onrender.com/api/v1/auth/businessupdateposters/"
+          patchImageUrlEndpoint="https://digicholabackendfinal.onrender.com/api/v1/auth/businessupdateposters"
           onUpload={handleImageUploadCarry}
           business_id={decryptedId}
         />
@@ -460,8 +459,8 @@ console.log(businessData.BusinessDetails[0].is_Qr_generated)
           carouselName="Banner Images"
           imageFieldName="banner_image"
           imageData={businessData.BannerImages || []}
-          postImageUrlEndpoint="https://console.digichola.in/api/v1/auth/bannerimages/"
-          patchImageUrlEndpoint="https://console.digichola.in/api/v1/auth/bannerimages"
+          postImageUrlEndpoint="https://digicholabackendfinal.onrender.com/api/v1/auth/bannerimages/"
+          patchImageUrlEndpoint="https://digicholabackendfinal.onrender.com/api/v1/auth/bannerimages"
           onUpload={handleImageUploadCarry}
           business_id={decryptedId}
         />

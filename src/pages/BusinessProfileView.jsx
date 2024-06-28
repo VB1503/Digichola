@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams,Link } from "react-router-dom";
 import axios from "axios";
 import { IoShareSocial } from 'react-icons/io5';
+import { Check } from "lucide-react";
 import Modal from 'react-modal';
-import { Star as StarIcon, MapPin, Heart } from "lucide-react";
+import { Star as StarIcon, MessageCircle, MapPin, Heart } from "lucide-react";
 import { IoLogoWhatsapp } from 'react-icons/io';
 import { ChevronLeft,ChevronDown,ChevronUp } from "lucide-react";
 import { FaRupeeSign } from 'react-icons/fa';
@@ -36,7 +37,6 @@ const VideoThumbnail = ({ youtubeLink }) => {
   };
 function ProfileView() {
   const [overviewData, setOverviewData] = useState([]);
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const [showModal, setShowModal] = useState(false);
   const [selectedOverview, setSelectedOverview] = useState('');
   const [CarouselOpen, setCarouseelOpen] = useState(true)
@@ -82,7 +82,7 @@ function ProfileView() {
   useEffect(() => {
     const fetchData = async () => {
         try {
-            const res = await axios.get(`${BACKEND_API_URL}/api/v1/auth/vas_view_profile/${business_id}`);
+            const res = await axios.get(`https://digicholabackendfinal.onrender.com/api/v1/auth/vas_view_profile/${business_id}`);
             const response = res.data;
             setBusinessData(response.BusinessDetails[0]);
             setBannerData(response.BannerImages);
@@ -106,8 +106,6 @@ function ProfileView() {
     }
 }, [business_id]);
 const [qrData, setQrData] = useState({ qr_link: '', qr_image: '' });
-<<<<<<< HEAD
-=======
 
 useEffect(() => {
   const fetchQrData = async () => {
@@ -142,40 +140,7 @@ const handleShareClick = async (business_name) => {
     console.error('Error sharing:', error);
   }
 };
->>>>>>> 8a48a8573f2ce9731663882b516ea8f70f8ed02d
 
-useEffect(() => {
-  const fetchQrData = async () => {
-    try {
-      const response = await axios.get(`${BACKEND_API_URL}/api/v1/auth/qr_image_get/${business_id}/`);
-      const data = response.data[0];
-      setQrData({ qr_link: data.qr_link, qr_image: data.qr_image });
-    } catch (error) {
-      console.error('Error fetching QR data:', error);
-    }
-  };
-
-  fetchQrData();
-}, [business_id]);
-
-const handleShareClick = async (business_name) => {
-  try {
-    const urlToShare = qrData.qr_link || window.location.href; // Use current page URL if qr_link is not available
-
-    if (navigator.share) {
-      await navigator.share({
-        title: business_name,
-        text: 'Check out this business',
-        url: urlToShare,
-      });
-    } else {
-      navigator.clipboard.writeText(urlToShare);
-      alert('URL copied to clipboard');
-    }
-  } catch (error) {
-    console.error('Error sharing:', error);
-  }
-};
     useEffect(() => {
         const interval = setInterval(() => {
             if (bannerData && bannerData.length > 0) {
@@ -207,7 +172,7 @@ const handleShareClick = async (business_name) => {
       console.log(formData)
       if (userId){
       // Post the rating to the endpoint
-      axios.post(`${BACKEND_API_URL}/api/v1/auth/ratings/`, formData)
+      axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/ratings/', formData)
           .then(response => {
               setRated(true);
               setTimeout(() => {
@@ -223,7 +188,7 @@ const handleShareClick = async (business_name) => {
 
   useEffect(() => {
       if (business_id && userId) {
-      axios.get(`${BACKEND_API_URL}/api/v1/auth/ratings/${userId}/${business_id}/`)
+      axios.get(`https://digicholabackendfinal.onrender.com/api/v1/auth/ratings/${userId}/${business_id}/`)
           .then(response => {
               setRating(response.data.Ratings);
               setFinalRating(response.data.Ratings);
@@ -262,10 +227,6 @@ const handleShareClick = async (business_name) => {
     };
 
     
-<<<<<<< HEAD
-
-=======
->>>>>>> 8a48a8573f2ce9731663882b516ea8f70f8ed02d
     const handleHeartClick = async () => {
         try {
             const userId = parseInt(localStorage.getItem('userid'));
@@ -279,7 +240,7 @@ const handleShareClick = async (business_name) => {
                 category: category,
                 business: parseInt(business_id)
             };
-            const response = await axios.post(`${BACKEND_API_URL}/api/v1/auth/favourites/`, favouriteData);
+            const response = await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/favourites/', favouriteData);
               alert("Added to Favourites")
               setHeartclick(true)
         } catch (error) {

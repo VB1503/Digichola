@@ -5,7 +5,6 @@ import axios from "axios";
 import SearchBar from "../components/SearchBar";
 
 const CategorySelected = () => {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const { categorySelected } = useParams();
   const [selectedCategory, setSelectedCategory] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +20,7 @@ const CategorySelected = () => {
     setError(null);
     try {
       const response = await axios.get(
-        `${BACKEND_API_URL}/search/categories/${categorySelected}`
+        `https://digicholabackendfinal.onrender.com/search/categories/${categorySelected}`
       );
       setSelectedCategory(response.data);
       setIsLoading(false);

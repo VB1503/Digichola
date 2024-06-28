@@ -4,7 +4,6 @@ import { FaEyeSlash, FaEye} from "react-icons/fa";
 import axios from "axios";
 
 function Register() {
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const REACT_APP_GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE
   const REACT_APP_GOGGLE_REDIRECT_URL_ENDPOINT = import.meta.env.VITE_BASE;
   const [username, setUsername] = useState(localStorage.getItem('first_name'));
@@ -64,7 +63,7 @@ function Register() {
     try {
       // Check if there are any errors before submitting the form
       if (Object.values(errors).every(error => error === '')) {
-        const response = await axios.post(`${BACKEND_API_URL}/api/v1/auth/register/`, formdata);
+        const response = await axios.post('https://digicholabackendfinal.onrender.com/api/v1/auth/register/', formdata);
         const result = response.data;
         if (response.status === 201) {
           localStorage.setItem('userid', result.data.id);

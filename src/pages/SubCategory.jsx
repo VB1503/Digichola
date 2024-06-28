@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { ChevronLeft,ChevronRight} from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Header from "../components/Header";
 import axios from "axios";
 const SubCategoriesList = () => {
   const { id, category } = useParams();
-  const  BACKEND_API_URL = import.meta.env.VITE_BACKEND
   const navigate = useNavigate();
   useEffect(() => {
     fetchCategoryById();
@@ -15,7 +15,7 @@ const SubCategoriesList = () => {
   const fetchCategoryById = async () => {
     setLoading(true);
     const response = await axios.get(
-      `${BACKEND_API_URL}/search/categories`
+      "https://digicholabackendfinal.onrender.com/search/categories"
     );
     const filterCategory = response.data.filter(
       (data) => data.parent === parseInt(id)
