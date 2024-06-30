@@ -124,7 +124,7 @@ function App() {
             element={<ProfileView />}
           />
           <Route
-            path="/:chunk/"
+            path="QR/:chunk/"
             element={<QRredirect />}
           />
           <Route
